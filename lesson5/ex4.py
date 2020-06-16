@@ -1,5 +1,4 @@
 numStr = input("Enter a number: ")
-num = int(numStr)
 
 # So this works but actually I'm not sure you need two variables
 # For example this version has one less variable
