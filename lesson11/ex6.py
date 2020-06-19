@@ -6,6 +6,10 @@ trials = 0
 guess = -1
 
 while True:
+    # I would prefer to write a function that reads stubbornly a numeric value
+    # in range and call it from here
+    # guess = read_numeric_value_in_range(1, range_limit)
+    # (instead of writing the try/except here)
     try:
         guess = int(input(f"Guess number in range [1,{range_limit}]: "))
     except Exception:

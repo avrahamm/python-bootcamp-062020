@@ -1,6 +1,9 @@
 from random import randint
 
-
+# So it's worth noting that python already has that function built-in
+# it's called math.gcd and to use it you'll
+# import math
+# math.gcd(a, b)
 def find_greatest_common_divisor(a, b):
     """
     Simplified version of gcd in assumption numbers are in range [1,10]
