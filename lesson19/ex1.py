@@ -10,6 +10,7 @@ password = input('Please enter your password: ')
 
 print(name, password)
 
+# Great use of try/except here
 try:
     if user_credentials[name] == password:
         print("Welcome Master")

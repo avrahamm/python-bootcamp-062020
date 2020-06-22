@@ -1,6 +1,8 @@
 import sys
 from collections import defaultdict
 
+# Well done - loved it
+
 
 def build_anagrams_dict():
     filename = sys.argv[1]  # words
