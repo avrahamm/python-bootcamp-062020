@@ -10,8 +10,10 @@ with open('hosts.json') as json_file:
 
 print(host_ip_dict)
 
-input_params = sys.argv[1:len(sys.argv)]
-hosts = [host for host in input_params]
+# I think this works the same way
+# without an extra variable and without the
+# list comprehension
+hosts = sys.argv[1:]
 
 for host in hosts:
     try:
