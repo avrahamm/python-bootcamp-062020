@@ -8,8 +8,7 @@ with open('hosts', 'r') as f:
 
 print(host_ip_dict)
 
-input_params = sys.argv[1:len(sys.argv)]
-hosts = [host for host in input_params]
+hosts = sys.argv[1:]
 
 for host in hosts:
     try:

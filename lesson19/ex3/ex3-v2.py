@@ -13,6 +13,8 @@ print(host_ip_dict)
 # I think this works the same way
 # without an extra variable and without the
 # list comprehension
+#
+# => Correct
 hosts = sys.argv[1:]
 
 for host in hosts:

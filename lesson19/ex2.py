@@ -6,19 +6,19 @@ def get_numbers_list_from_argsv():
     input_list = sys.argv[1:]
     # Cool! Though personally I'd just return the list comprehension
     # return [int(n) for n in input_list]
-    numbers_list = [int(n) for n in input_list]
-    return numbers_list
+    # => fixed
+    return [int(n) for n in input_list]
 
 
-def count_list_average(numbers):
+def count_list_average(numbers_list):
     # Wait - where did "numbers" come from?
     # (yes I can see - it's defined below in the last part of the program
     #  but I hope you can see why using variables from outside your function is
     #  a bad practice. It's hard to spot them or to find bugs)
     # Better to pass numbers as an input argument to the function
-    numbers_sum = sum(numbers)
+    numbers_sum = sum(numbers_list)
     print(f"numbers_sum = {numbers_sum}")
-    numbers_count = len(numbers)
+    numbers_count = len(numbers_list)
     print(f"numbers_count = {numbers_count}")
     avg = (numbers_sum/numbers_count)
     print(f"avg = {avg}")
