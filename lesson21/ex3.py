@@ -1,19 +1,19 @@
 class Widget:
     def __init__(self, name):
-        self.name = name
-        self.status = False
-        self.children = []
+        self._name = name
+        self._status = False
+        self._children = []
 
     def add_dependency(self, *args):
-        self.children += list(args)
+        self._children += list(args)
 
     def build(self):
-        for child in self.children:
+        for child in self._children:
             child.build()
 
-        if not self.status:
-            print(self.name, end=", ")
-            self.status = True
+        if not self._status:
+            print(self._name, end=", ")
+            self._status = True
 
 
 padme = Widget("Padme Amidala")  # leila, _all
