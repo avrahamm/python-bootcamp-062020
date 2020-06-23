@@ -3,7 +3,9 @@ class Summer:
         self._total = 0
 
     def add(self, *args):
-        self._total += sum(list(args))
+        # It works even without converting to list()
+        # (sum works on tuples too)
+        self._total += sum(args)
 
     def print_total(self):
         print(self._total)
