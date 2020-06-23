@@ -5,20 +5,28 @@ class Widget:
         # I'd use something like _built or _done
         # instead of _status
         # (because _status can be many things and does not imply boolean)
-        self._status = False
+        #
+        # => changed to _built
+        self._built = False
         self._children = []
 
     def add_dependency(self, *args):
         # You don't need to convert to list...
+        # self._children += list(args)
+        #
+        # => yet this will not work:
+        # self._children = self._children + args
+        # and with converted list(args) will:
+        # self._children = self._children + list(args)
         self._children += list(args)
 
     def build(self):
         for child in self._children:
             child.build()
 
-        if not self._status:
+        if not self._built:
             print(self._name, end=", ")
-            self._status = True
+            self._built = True
 
 
 padme = Widget("Padme Amidala")  # leila, _all
