@@ -1,6 +1,7 @@
 class MyCounter:
     count = 0
 
+    # Great!
     def __init__(self):
         MyCounter.count += 1
 

@@ -1,10 +1,15 @@
 class Widget:
     def __init__(self, name):
         self._name = name
+        # A small naming suggestion - 
+        # I'd use something like _built or _done
+        # instead of _status
+        # (because _status can be many things and does not imply boolean)
         self._status = False
         self._children = []
 
     def add_dependency(self, *args):
+        # You don't need to convert to list...
         self._children += list(args)
 
     def build(self):
