@@ -18,15 +18,22 @@ class Widget:
         # self._children = self._children + args
         # and with converted list(args) will:
         # self._children = self._children + list(args)
-        self._children += list(args)
+        #
+        # => Ynon explained that l1 += t1 is not equivalent to l1 = l1 +t1
+        # as l1 += t1 uses l1.extend function can get any type of argument.
+        # So no need to explicitly convert to list in the case.
+        self._children += args
 
     def build(self):
-        for child in self._children:
-            child.build()
-
+        # Ynon noted it is better to check first
+        # to avoid "empty" recursive call even does nothing
         if not self._built:
-            print(self._name, end=", ")
             self._built = True
+
+            for child in self._children:
+                child.build()
+
+            print(self._name, end=", ")
 
 
 padme = Widget("Padme Amidala")  # leila, _all

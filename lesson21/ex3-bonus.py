@@ -45,12 +45,15 @@ class Widget:
             self._children.append(instance)
 
     def build(self):
-        for child in self._children:
-            child.build()
-
+        # Ynon noted it is better to check first
+        # to avoid "empty" recursive call even does nothing
         if not self._built:
-            print(self._name, end=", ")
             self._built = True
+
+            for child in self._children:
+                child.build()
+
+            print(self._name, end=", ")
 
 
 leia = Widget("Leia")
