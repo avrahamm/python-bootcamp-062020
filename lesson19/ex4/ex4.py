@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict
 
+
 # Well done - loved it
 
 
@@ -14,14 +15,13 @@ def build_anagrams_dict():
             anagrams_dict[key].add(clean_word)
         return anagrams_dict
 
+
 try:
-    anagrams = build_anagrams_dict()
+    anagram_sets = build_anagrams_dict()
 except Exception:
     print("Illegal input file name")
     exit(1)
 
-for anagrams in anagrams.values():
-    anagrams_list = list(anagrams)
+for anagram_words in anagram_sets.values():
+    anagrams_list = list(anagram_words)
     print(' '.join(anagrams_list))
-
-
