@@ -4,13 +4,19 @@ from ai_player import AIPlayer
 from game_manager import GameManager
 
 if __name__ == '__main__':
+    """
+    You need to create 2 players, either Human or AI with different values
+    For details see GameManager docs
+    """
     score_keeper = Score()
-    h1 = HumanPlayer(score_keeper, 'x', "Shimon")
-    h2 = HumanPlayer(score_keeper, 'x', "Reuven")
-    # a = AIPlayer(score_keeper, 'o')
+    h1 = HumanPlayer(score_keeper, 'x', "Reuven")
+    h2 = HumanPlayer(score_keeper, 'o', "Shimon")
+    a1 = AIPlayer(score_keeper, 'x')
+    a2 = AIPlayer(score_keeper, 'o', "Bot2")
 
     while True:
-        game_manager = GameManager(h1, a)
+        # combine "x" and "o" accurately
+        game_manager = GameManager(a1, a2)
         while not game_manager.game_over():
             game_manager.print_board()
             try:
@@ -26,16 +32,13 @@ if __name__ == '__main__':
 
         game_manager.print_board()
         winner = game_manager.get_winner()
-
-        if winner.value == h.value:  # "x":
-            print(f"{h.value}! {h.name} won")
-        elif winner.value == a.value:  # "o":
-            print(f"{a.value}! {a.name} won")
+        if winner is not None:
+            print(f"{winner.value}! {winner.name} won")
+            winner.sign_victory()
         else:
-            print("game over...")
+            print("No winner, game over...")
 
-        winner.sign_victory()
-        print(h.score.score)
+        print(game_manager.current_player().score.score)
 
         next_game = input("Want to play again? Y/N ?")
         if next_game == 'Y':

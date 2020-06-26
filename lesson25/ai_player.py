@@ -14,6 +14,6 @@ class AIPlayer(BasePlayer):
 
         utils = BoardUtils()
         return utils.scan_board(
-            board,
+            board.board,
             foreach_cell,
         )

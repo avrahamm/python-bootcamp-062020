@@ -1,6 +1,10 @@
 from board import Board
 from board_utils import BoardUtils
 
+"""
+GameManager holds players, _current_player_index and board.
+"""
+
 
 class GameManager:
     def __init__(self, player0, player1, board_size=3):
@@ -61,7 +65,7 @@ class GameManager:
     def print_board(self):
         bu = BoardUtils()
         bu.scan_board(
-            self.board,
+            self.board.board,
             lambda i, j, is_last: print(
                 f"{self.board.board[i][j]:3}", end="\n" if is_last else ""
             )

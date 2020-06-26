@@ -1,3 +1,6 @@
+from board_utils import BoardUtils
+
+
 class Board:
     def __init__(self, board_size):
         self.board_size = board_size
@@ -15,10 +18,15 @@ class Board:
         return self.board[i][j] == '.'
 
     def empty_cell_exists(self):
-        for i in range(len(self.board)):
-            for j in range(len(self.board[i])):
-                if self.is_cell_empty(i, j):
-                    return True
+        bu = BoardUtils()
+
+        def foreach_cell(i, j, is_last):
+            if self.is_cell_empty(i, j):
+                return True
+
+        utils = BoardUtils()
+        if utils.scan_board(self.board, foreach_cell):
+            return True
         return False
 
     def sign_move(self, next_move, value):
