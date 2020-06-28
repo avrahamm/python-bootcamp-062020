@@ -7,3 +7,9 @@ class Score:
 
     def sign_victory(self, name):
         self.score[name] += 10
+
+    def print(self):
+        print(self.score.items())
+
+    def print_player(self, name):
+        print(self.score[name])

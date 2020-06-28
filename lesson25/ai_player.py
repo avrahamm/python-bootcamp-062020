@@ -1,3 +1,5 @@
+import time
+
 from base_player import BasePlayer
 from board_utils import BoardUtils
 
@@ -8,6 +10,8 @@ class AIPlayer(BasePlayer):
 
     def next_move(self, board):
         print(f"{self.name} turn, value {self.value}")
+        time.sleep(2.4)
+
         def foreach_cell(i, j, is_last):
             if board.board[i][j] == '.':
                 return [i, j]

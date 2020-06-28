@@ -38,11 +38,11 @@ if __name__ == '__main__':
         else:
             print("No winner, game over...")
 
-        print(game_manager.current_player().score.score)
+        score_keeper.print()
 
         next_game = input("Want to play again? Y/N ?")
         if next_game == 'Y':
             continue
         else:
             print("Bye!")
-            exit(0)
+            break
