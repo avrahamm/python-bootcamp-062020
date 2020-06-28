@@ -15,9 +15,8 @@ class Turn:
 
 class OfficerQueuesManager:
     """
-    Dictionary to hold officers queues
+        List to hold turns of all (visitor,officer)
     """
-
     def __init__(self):
         self.turns = []
 
