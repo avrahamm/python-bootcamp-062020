@@ -1,5 +1,5 @@
 """
-Singleton is used to assure Widget with specific "name"
+Registry Design pattern is used to assure Widget with specific "name"
 is created only once.
 As in base version, each Widget is built/printed only once.
 """
@@ -7,9 +7,14 @@ As in base version, each Widget is built/printed only once.
 
 class Widget:
     """
-    Dictionary is used to implement singleton
+    Dictionary is used to implement registry - not singleton!
+    ynonp06/25/2020 noted:
+    קלעת בול עם התרגיל בונוס
+    רק התבנית נקראת Registry ולא Singleton
+    https://martinfowler.com/eaaCatalog/registry.html
     """
-    singleton = {}
+    # TODO! consider to delegate to external Registry object
+    registry = {}
 
     def __init__(self, name):
         self._name = name
@@ -21,15 +26,15 @@ class Widget:
         # => changed to _built
         self._built = False
         self._children = []
-        Widget.singleton[name] = self
+        Widget.registry[name] = self
 
     @staticmethod
     def get_instance(name):
         try:
-            return Widget.singleton[name]
+            return Widget.registry[name]
         except KeyError:
             instance = Widget(name)
-            Widget.singleton[name] = instance
+            Widget.registry[name] = instance
             return instance
 
     def add_dependency(self, *args):
