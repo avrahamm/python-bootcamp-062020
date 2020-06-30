@@ -4,8 +4,22 @@ from board_utils import BoardUtils
 class Board:
     def __init__(self, board_size):
         self.board_size = board_size
-        self.board = [['.', '.', '.'] for row in range(board_size)]
+        # self.board = [['.', '.', '.'] for row in range(board_size)]
+        self.board = [['.' for x in range(self.board_size)] for y in range(self.board_size)]
         # self.board = [['x', '.', '.'], ['o', '.', '.'], ['.', '.', '.']]
+
+    def __eq__(self, other):
+        if self.board_size != other.board_size:
+            return False
+
+        def foreach_cell(i, j, is_last):
+            if self.board[i][j] != other.board[i][j]:
+                return False
+
+        utils = BoardUtils()
+        if utils.scan_board(self.board, foreach_cell) is False:
+            return False
+        return True
 
     def is_valid(self, next_move):
         row, column = next_move
@@ -18,8 +32,6 @@ class Board:
         return self.board[i][j] == '.'
 
     def empty_cell_exists(self):
-        bu = BoardUtils()
-
         def foreach_cell(i, j, is_last):
             if self.is_cell_empty(i, j):
                 return True
