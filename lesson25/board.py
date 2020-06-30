@@ -45,10 +45,44 @@ class Board:
         row, column = next_move
         self.board[row][column] = value
 
-    def is_all_the_same(self, i1, i2, i3, val):
-        if (self.board[i1[0]][i1[1]] == self.board[i2[0]][i2[1]] and
-                self.board[i1[0]][i1[1]] == self.board[i3[0]][i3[1]] and
-                self.board[i1[0]][i1[1]] == val):
-            return True
-        else:
-            return False
+    def is_winning_row(self, value):
+        for row in range(self.board_size):
+            answer = True
+            for col in range(self.board_size):
+                if self.board[row][col] != value:
+                    answer = False
+                    break
+            if answer:
+                return True
+
+        return False
+
+    def is_winning_col(self, value):
+        for col in range(self.board_size):
+            answer = True
+            for row in range(self.board_size):
+                if self.board[row][col] != value:
+                    answer = False
+                    break
+            if answer:
+                return True
+
+        return False
+
+    def is_winning_first_diagonal(self, value):
+        answer = True
+        for i in range(self.board_size):
+            if self.board[i][i] != value:
+                answer = False
+                break
+
+        return answer
+
+    def is_winning_second_diagonal(self, value):
+        answer = True
+        for i, j in zip(range(self.board_size), range(self.board_size - 1, -1, -1)):
+            if self.board[i][j] != value:
+                answer = False
+                break
+
+        return answer

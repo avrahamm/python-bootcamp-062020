@@ -4,19 +4,21 @@ from ai_player import AIPlayer
 from game_manager import GameManager
 
 if __name__ == '__main__':
-    """
-    You need to create 2 players, either Human or AI with different values
-    For details see GameManager docs
-    """
+    # 1st human player is created.
     score_keeper = Score()
     h1 = HumanPlayer(score_keeper, 'x', "Reuven")
-    h2 = HumanPlayer(score_keeper, 'o', "Shimon")
-    a1 = AIPlayer(score_keeper, 'x')
-    a2 = AIPlayer(score_keeper, 'o', "Bot2")
+    # h2 = HumanPlayer(score_keeper, 'o', "Shimon")
+    # a1 = AIPlayer(score_keeper, 'x')
+    # a2 = AIPlayer(score_keeper, 'o', "Bot2")
 
     while True:
-        # combine "x" and "o" accurately
-        game_manager = GameManager(a1, h2)
+        """
+        You need to create 2nd 'o' player, either Human or AI, and select its name.
+        For details see GameManager docs
+        """
+        opponent = GameManager.get_opponent_player(score_keeper)
+
+        game_manager = GameManager(h1, opponent)
         board = game_manager.board
         while not game_manager.game_over():
             game_manager.print_board()

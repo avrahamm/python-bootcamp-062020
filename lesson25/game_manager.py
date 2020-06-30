@@ -1,5 +1,7 @@
 from board import Board
 from board_utils import BoardUtils
+from human_player import HumanPlayer
+from ai_player import AIPlayer
 
 """
 GameManager holds players, _current_player_index and board.
@@ -11,6 +13,21 @@ class GameManager:
         self._players = [player0, player1]
         self._current_player_index = 0
         self.board = Board(board_size)
+
+    @staticmethod
+    def get_opponent_player(score_keeper):
+        dispatcher = {
+            'H': HumanPlayer,
+            'A': AIPlayer
+        }
+        while True:
+            opponent_type = input(f"Select Human or AI, H/A respectively: ")
+            opponent_name = input(f"Select opponent name: ")
+            try:
+                opponent = dispatcher[opponent_type](score_keeper, 'o', opponent_name)
+                return opponent
+            except Exception:
+                print('Illegal format, try again: ')
 
     def current_player(self):
         return self._players[self._current_player_index]
@@ -33,25 +50,19 @@ class GameManager:
     def get_winner(self):
         for player in self._players:
             # rows
-            if self.board.is_all_the_same((0, 0), (0, 1), (0, 2), player.value):
-                return player
-            if self.board.is_all_the_same((1, 0), (1, 1), (1, 2), player.value):
-                return player
-            if self.board.is_all_the_same((2, 0), (2, 1), (2, 2), player.value):
+            if self.board.is_winning_row(player.value):
                 return player
 
             # columns
-            if self.board.is_all_the_same((0, 0), (1, 0), (2, 0), player.value):
-                return player
-            if self.board.is_all_the_same((0, 1), (1, 1), (2, 1), player.value):
-                return player
-            if self.board.is_all_the_same((0, 2), (1, 2), (2, 2), player.value):
+            if self.board.is_winning_col(player.value):
                 return player
 
-            # diagonals
-            if self.board.is_all_the_same((0, 0), (1, 1), (2, 2), player.value):
+            # first diagonal
+            if self.board.is_winning_first_diagonal(player.value):
                 return player
-            if self.board.is_all_the_same((0, 2), (1, 1), (2, 0), player.value):
+
+            # second diagonal
+            if self.board.is_winning_second_diagonal(player.value):
                 return player
 
     def print(self):
