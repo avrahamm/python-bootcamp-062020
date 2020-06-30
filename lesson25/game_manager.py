@@ -18,11 +18,6 @@ class GameManager:
     def is_valid_move(self, next_move):
         return self.board.is_valid_move(next_move)
 
-    def next_move(self):
-        current_player = self.current_player()
-        # self.board is relevant for AIPlayer only.
-        return current_player.next_move(self.board)
-
     def play(self, next_move):
         current_player_value = self.current_player().value
         self.board.sign_move(next_move, current_player_value)

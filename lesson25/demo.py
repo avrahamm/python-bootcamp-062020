@@ -16,11 +16,13 @@ if __name__ == '__main__':
 
     while True:
         # combine "x" and "o" accurately
-        game_manager = GameManager(a1, a2)
+        game_manager = GameManager(a1, h2)
+        board = game_manager.board
         while not game_manager.game_over():
             game_manager.print_board()
             try:
-                next_move = game_manager.next_move()
+                current_player = game_manager.current_player()
+                next_move = current_player.next_move(board)
                 print(next_move)
                 if game_manager.is_valid_move(next_move):
                     game_manager.play(next_move)
