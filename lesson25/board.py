@@ -21,7 +21,7 @@ class Board:
             return False
         return True
 
-    def is_valid(self, next_move):
+    def is_valid_move(self, next_move):
         row, column = next_move
         try:
             return self.is_cell_empty(row, column)

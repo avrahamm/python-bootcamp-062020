@@ -16,7 +16,7 @@ class GameManager:
         return self._players[self._current_player_index]
 
     def is_valid_move(self, next_move):
-        return self.board.is_valid(next_move)
+        return self.board.is_valid_move(next_move)
 
     def next_move(self):
         current_player = self.current_player()

@@ -47,14 +47,10 @@ class BoardTest(unittest.TestCase):
         valid_move = [0, 1]
         invalid_move = [0, 4]
         board_size = 3
-        board_3 = Board(board_size)
-        board_3.board = [
-            ['x', 'o', '.'],
-            ['.', '.', '.'],
-            ['.', '.', '.']
-        ]
+        board = Board(board_size)
 
-        self.assertEqual(board_3, board)
+        self.assertTrue(board.is_valid_move(valid_move))
+        self.assertFalse(board.is_valid_move(invalid_move))
 
 
 if __name__ == '__main__':
