@@ -13,4 +13,4 @@ It is possible to play with Human or AI players,</br>
 Also it is possible to play more that one time,</br>
 and to see score at the end of each game.</br>
 
-Currently, tests do not work so you can ignore test folder.
+Currently, unittest tests started to work.
