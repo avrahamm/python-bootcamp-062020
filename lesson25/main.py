@@ -1,7 +1,7 @@
-from score import Score
-from human_player import HumanPlayer
-from ai_player import AIPlayer
-from game_manager import GameManager
+import src.exceptions as exceptions
+from src.score import Score
+from src.human_player import HumanPlayer
+from src.game_manager import GameManager
 
 
 def main():
@@ -30,10 +30,14 @@ def main():
                 print(next_move)
                 if game_manager.is_valid_move(next_move):
                     game_manager.play(next_move)
-                else:
-                    print("Illegal move, either the cell is not empty or indexes are out of board!")
-            except Exception:
-                print('Illegal format move!')
+            except exceptions.ParseMoveError as err:
+                print(err)
+                continue
+            except exceptions.OutOfBoardError as err:
+                print(f"Illegal move, {err.row, err.col} is out of board!")
+                continue
+            finally:
+                print('Try again')
                 continue
 
         game_manager.print_board()

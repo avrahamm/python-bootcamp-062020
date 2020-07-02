@@ -1,4 +1,5 @@
-from board_utils import BoardUtils
+from src.board_utils import BoardUtils
+import src.exceptions as exceptions
 
 
 class Board:
@@ -26,7 +27,7 @@ class Board:
         try:
             return self.is_cell_empty(row, column)
         except IndexError:
-            return False
+            raise exceptions.OutOfBoardError(row, column)
 
     def is_cell_empty(self, i, j):
         return self.board[i][j] == '.'

@@ -1,9 +1,9 @@
 import unittest
-from score import Score
-from board import Board
-from human_player import HumanPlayer
-from ai_player import AIPlayer
-from game_manager import GameManager
+from src.score import Score
+from src.board import Board
+from src.human_player import HumanPlayer
+from src.ai_player import AIPlayer
+from src.game_manager import GameManager
 
 
 class GameManagerTest(unittest.TestCase):

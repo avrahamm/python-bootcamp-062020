@@ -1,7 +1,7 @@
 import time
 
-from base_player import BasePlayer
-from board_utils import BoardUtils
+from src.base_player import BasePlayer
+from src.board_utils import BoardUtils
 
 
 class AIPlayer(BasePlayer):

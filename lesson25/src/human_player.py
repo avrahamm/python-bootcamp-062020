@@ -1,5 +1,5 @@
-from base_player import BasePlayer
-from board_utils import BoardUtils
+from src.base_player import BasePlayer
+import src.exceptions as exceptions
 
 
 class HumanPlayer(BasePlayer):
@@ -9,5 +9,9 @@ class HumanPlayer(BasePlayer):
 
     def next_move(self, board):
         next_move = input(f"{self.name} turn, value {self.value}. Type the square position as (row, column)")
-        coordinates = [int(coordinate.strip()) for coordinate in next_move.split(',')]
-        return coordinates
+        try:
+            coordinates = [int(coordinate.strip()) for coordinate in next_move.split(',')]
+            return coordinates
+        except Exception:
+            raise exceptions.ParseMoveError("Illegal input for next move")
+

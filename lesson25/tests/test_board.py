@@ -1,10 +1,10 @@
 import unittest
 
-from score import Score
-from ai_player import AIPlayer
-from human_player import HumanPlayer
-from game_manager import GameManager
-from board import Board
+import src.exceptions as exceptions
+from src.score import Score
+from src.ai_player import AIPlayer
+from src.human_player import HumanPlayer
+from src.board import Board
 
 
 class BoardTest(unittest.TestCase):
@@ -79,7 +79,7 @@ class BoardTest(unittest.TestCase):
         board_size = 3
         valid_move = [0, 0]
         occupied = [0, 1]
-        out_of_board = [0, board_size +2]
+        out_of_board = [0, board_size + 2]
 
         board = Board(board_size)
         board.board = [
@@ -90,13 +90,13 @@ class BoardTest(unittest.TestCase):
 
         self.assertTrue(board.is_valid_move(valid_move))
         self.assertFalse(board.is_valid_move(occupied))
-        self.assertFalse(board.is_valid_move(out_of_board))
+        self.assertRaises(exceptions.OutOfBoardError, board.is_valid_move, out_of_board)
 
     def test_empty_cell_exists(self):
         board_size = 3
         valid_move = [0, 0]
         occupied = [0, 1]
-        out_of_board = [0, board_size +2]
+        out_of_board = [0, board_size + 2]
 
         board_available = Board(board_size)
         board_available.board = [
@@ -163,6 +163,7 @@ class BoardTest(unittest.TestCase):
 
         self.assertTrue(board_3.is_winning_second_diagonal('x'))
         self.assertFalse(board_3.is_winning_second_diagonal('o'))
+
 
 if __name__ == '__main__':
     unittest.main()

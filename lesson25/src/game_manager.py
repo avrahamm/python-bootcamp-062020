@@ -1,7 +1,7 @@
-from board import Board
-from board_utils import BoardUtils
-from human_player import HumanPlayer
-from ai_player import AIPlayer
+from src.board import Board
+from src.board_utils import BoardUtils
+from src.human_player import HumanPlayer
+from src.ai_player import AIPlayer
 
 """
 GameManager holds players, _current_player_index and board.
