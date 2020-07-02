@@ -29,6 +29,16 @@ class GameManager:
             except Exception:
                 print('Illegal format, try again: ')
 
+    @staticmethod
+    def input_board_size():
+        board_size = 3
+        while True:
+            try:
+                board_size = int(input(f"Select board size: "))
+                return board_size
+            except Exception:
+                continue
+
     def current_player(self):
         return self._players[self._current_player_index]
 

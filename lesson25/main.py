@@ -3,7 +3,8 @@ from human_player import HumanPlayer
 from ai_player import AIPlayer
 from game_manager import GameManager
 
-if __name__ == '__main__':
+
+def main():
     # 1st human player is created.
     score_keeper = Score()
     h1 = HumanPlayer(score_keeper, 'x', "Reuven")
@@ -17,8 +18,9 @@ if __name__ == '__main__':
         For details see GameManager docs
         """
         opponent = GameManager.get_opponent_player(score_keeper)
+        board_size = GameManager.input_board_size()
 
-        game_manager = GameManager(h1, opponent)
+        game_manager = GameManager(h1, opponent, board_size)
         board = game_manager.board
         while not game_manager.game_over():
             game_manager.print_board()
@@ -50,3 +52,7 @@ if __name__ == '__main__':
         else:
             print("Bye!")
             break
+
+
+if __name__ == '__main__':
+    main()
