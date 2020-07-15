@@ -14,26 +14,24 @@ class AddressBook:
         print("__enter__")
         try:
             self.fp = open(self.filename, "r")
-        except FileNotFoundError as e:
-            self.fp = open(self.filename, "x")
-            self.fp.close()
-            self.fp = open(self.filename, "r")
-
-        try:
             data = json.load(self.fp)
             self.contacts = data['contacts']
         except Exception as e:
             self.contacts = {}
+
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         print("__exit__")
+        try:
+            self.fp.close()
+        except Exception:
+            pass
+
         if exc_type is None:
             with open(self.filename, 'w') as outfile:
                 json.dump({"contacts": self.contacts}, outfile)
-                self.fp.close()
         else:
-            self.fp.close()
             raise IndexError
 
     def add(self, name, email):
